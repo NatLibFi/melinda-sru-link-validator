@@ -1,0 +1,895 @@
+[
+    {
+        "_validationOptions": {
+            "subfieldValues": false
+        },
+        "leader": "01408cca a22003854i 4500",
+        "fields": [
+            {
+                "tag": "001",
+                "value": "000000001"
+            },
+            {
+                "tag": "003",
+                "value": "FI-MELINDA"
+            },
+            {
+                "tag": "005",
+                "value": "20171128104057.0"
+            },
+            {
+                "tag": "007",
+                "value": "qu"
+            },
+            {
+                "tag": "008",
+                "value": "171128s2006    fi gma       n  | fifin  "
+            },
+            {
+                "tag": "031",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "t",
+                        "value": "Sä matkamies, oi koeta päästä"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)009211952"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)011568349"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "(FI-MELINDA)011633471"
+                    }
+                ]
+            },
+            {
+                "tag": "041",
+                "ind1": "0",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "fin"
+                    }
+                ]
+            },
+            {
+                "tag": "042",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "finbd"
+                    }
+                ]
+            },
+            {
+                "tag": "100",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "xxxxxxx, xxxxxx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "säveltäjä."
+                    }
+                ]
+            },
+            {
+                "tag": "245",
+                "ind1": "1",
+                "ind2": "0",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Kehoitus."
+                    }
+                ]
+            },
+            {
+                "tag": "336",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "nuottikirjoitus"
+                    },
+                    {
+                        "code": "b",
+                        "value": "ntm"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdacontent"
+                    }
+                ]
+            },
+            {
+                "tag": "337",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "käytettävissä ilman laitetta"
+                    },
+                    {
+                        "code": "b",
+                        "value": "n"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdamedia"
+                    }
+                ]
+            },
+            {
+                "tag": "700",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Foo, Fii,"
+                    },
+                    {
+                        "code": "d",
+                        "value": "18xx-19xx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "sanoittaja."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_validationOptions": {
+            "subfieldValues": false
+        },
+        "leader": "01411cca a22003854i 4500",
+        "fields": [
+            {
+                "tag": "001",
+                "value": "000000002"
+            },
+            {
+                "tag": "003",
+                "value": "FI-MELINDA"
+            },
+            {
+                "tag": "005",
+                "value": "20171128104059.0"
+            },
+            {
+                "tag": "007",
+                "value": "qu"
+            },
+            {
+                "tag": "008",
+                "value": "171128s2006    fi gma       n  | fifin  "
+            },
+            {
+                "tag": "031",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "t",
+                        "value": "Sä matkamies, oi koeta päästä"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)009211953"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)011568350"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "(FI-MELINDA)011633473"
+                    }
+                ]
+            },
+            {
+                "tag": "041",
+                "ind1": "0",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "fin"
+                    }
+                ]
+            },
+            {
+                "tag": "042",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "finbd"
+                    }
+                ]
+            },
+            {
+                "tag": "100",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Foo, Faa,"
+                    },
+                    {
+                        "code": "d",
+                        "value": "18xx-19xx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "säveltäjä."
+                    }
+                ]
+            },
+            {
+                "tag": "245",
+                "ind1": "1",
+                "ind2": "0",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Kehoitus."
+                    }
+                ]
+            },
+            {
+                "tag": "336",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "nuottikirjoitus"
+                    },
+                    {
+                        "code": "b",
+                        "value": "ntm"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdacontent"
+                    }
+                ]
+            },
+            {
+                "tag": "337",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "käytettävissä ilman laitetta"
+                    },
+                    {
+                        "code": "b",
+                        "value": "n"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdamedia"
+                    }
+                ]
+            },
+            {
+                "tag": "700",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Foo, Fii,"
+                    },
+                    {
+                        "code": "d",
+                        "value": "18xx-19xx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "sanoittaja."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_validationOptions": {
+            "subfieldValues": false
+        },
+        "leader": "01404cca a22003854i 4500",
+        "fields": [
+            {
+                "tag": "001",
+                "value": "000000003"
+            },
+            {
+                "tag": "003",
+                "value": "FI-MELINDA"
+            },
+            {
+                "tag": "005",
+                "value": "20171128104100.0"
+            },
+            {
+                "tag": "007",
+                "value": "qu"
+            },
+            {
+                "tag": "008",
+                "value": "171128s2006    fi gma       n  | fifin  "
+            },
+            {
+                "tag": "031",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "t",
+                        "value": "Sä matkamies, oi koeta päästä"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)009211954"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)011568351"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "(FI-MELINDA)011633475"
+                    }
+                ]
+            },
+            {
+                "tag": "041",
+                "ind1": "0",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "fin"
+                    }
+                ]
+            },
+            {
+                "tag": "042",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "finbd"
+                    }
+                ]
+            },
+            {
+                "tag": "100",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Foo, Faa,"
+                    },
+                    {
+                        "code": "d",
+                        "value": "18xx-19xx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "säveltäjä."
+                    }
+                ]
+            },
+            {
+                "tag": "245",
+                "ind1": "1",
+                "ind2": "0",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Kehoitus."
+                    }
+                ]
+            },
+            {
+                "tag": "336",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "nuottikirjoitus"
+                    },
+                    {
+                        "code": "b",
+                        "value": "ntm"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdacontent"
+                    }
+                ]
+            },
+            {
+                "tag": "337",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "käytettävissä ilman laitetta"
+                    },
+                    {
+                        "code": "b",
+                        "value": "n"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdamedia"
+                    }
+                ]
+            },
+            {
+                "tag": "700",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Foo, Faa,"
+                    },
+                    {
+                        "code": "d",
+                        "value": "18xx-19xx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "sanoittaja."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_validationOptions": {
+            "subfieldValues": false
+        },
+        "leader": "01406cca a22003854i 4500",
+        "fields": [
+            {
+                "tag": "001",
+                "value": "000000004"
+            },
+            {
+                "tag": "003",
+                "value": "FI-MELINDA"
+            },
+            {
+                "tag": "005",
+                "value": "20171128104102.0"
+            },
+            {
+                "tag": "007",
+                "value": "qu"
+            },
+            {
+                "tag": "008",
+                "value": "171128s2006    fi gma       n  | fifin  "
+            },
+            {
+                "tag": "031",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "t",
+                        "value": "Sä matkamies, oi koeta päästä"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)009211955"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)011568353"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "(FI-VIOLA)011633477"
+                    }
+                ]
+            },
+            {
+                "tag": "041",
+                "ind1": "0",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "fin"
+                    }
+                ]
+            },
+            {
+                "tag": "042",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "finbd"
+                    }
+                ]
+            },
+            {
+                "tag": "100",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "xxxx, xxxxx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "säveltäjä."
+                    }
+                ]
+            },
+            {
+                "tag": "245",
+                "ind1": "1",
+                "ind2": "0",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Kehoitus."
+                    }
+                ]
+            },
+            {
+                "tag": "336",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "nuottikirjoitus"
+                    },
+                    {
+                        "code": "b",
+                        "value": "ntm"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdacontent"
+                    }
+                ]
+            },
+            {
+                "tag": "337",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "käytettävissä ilman laitetta"
+                    },
+                    {
+                        "code": "b",
+                        "value": "n"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdamedia"
+                    }
+                ]
+            },
+            {
+                "tag": "700",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Foo, Faa,"
+                    },
+                    {
+                        "code": "d",
+                        "value": "18xx-19xx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "sanoittaja."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_validationOptions": {
+            "subfieldValues": false
+        },
+        "leader": "01406cca a22003854i 4500",
+        "fields": [
+            {
+                "tag": "001",
+                "value": "000000005"
+            },
+            {
+                "tag": "003",
+                "value": "FI-MELINDA"
+            },
+            {
+                "tag": "005",
+                "value": "20171128104102.0"
+            },
+            {
+                "tag": "007",
+                "value": "qu"
+            },
+            {
+                "tag": "008",
+                "value": "171128s2006    fi gma       n  | fifin  "
+            },
+            {
+                "tag": "031",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "t",
+                        "value": "Sä matkamies, oi koeta päästä"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)009211955"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "z",
+                        "value": "(FI-MELINDA)011568353"
+                    }
+                ]
+            },
+            {
+                "tag": "035",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "(FI-MELINDA)011633477"
+                    }
+                ]
+            },
+            {
+                "tag": "041",
+                "ind1": "0",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "fin"
+                    }
+                ]
+            },
+            {
+                "tag": "042",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "test"
+                    }
+                ]
+            },
+            {
+                "tag": "100",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "xxxx, xxxxx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "säveltäjä."
+                    }
+                ]
+            },
+            {
+                "tag": "245",
+                "ind1": "1",
+                "ind2": "0",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Kehoitus."
+                    }
+                ]
+            },
+            {
+                "tag": "336",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "nuottikirjoitus"
+                    },
+                    {
+                        "code": "b",
+                        "value": "ntm"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdacontent"
+                    }
+                ]
+            },
+            {
+                "tag": "337",
+                "ind1": " ",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "käytettävissä ilman laitetta"
+                    },
+                    {
+                        "code": "b",
+                        "value": "n"
+                    },
+                    {
+                        "code": "2",
+                        "value": "rdamedia"
+                    }
+                ]
+            },
+            {
+                "tag": "700",
+                "ind1": "1",
+                "ind2": " ",
+                "subfields": [
+                    {
+                        "code": "a",
+                        "value": "Foo, Faa,"
+                    },
+                    {
+                        "code": "d",
+                        "value": "18xx-19xx,"
+                    },
+                    {
+                        "code": "e",
+                        "value": "sanoittaja."
+                    }
+                ]
+            }
+        ]
+    }
+]

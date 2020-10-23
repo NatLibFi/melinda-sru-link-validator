@@ -1,0 +1,17 @@
+{
+    "collect": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "q"
+    ],
+    "from": {
+        "tag": "100",
+        "value": "collect"
+    },
+    "to": {
+        "tag": "^(?:100|600|700)$",
+        "value": "collect"
+    }
+}

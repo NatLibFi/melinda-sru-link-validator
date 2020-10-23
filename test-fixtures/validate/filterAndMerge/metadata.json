@@ -1,0 +1,5 @@
+{
+    "description": "should merge link datas",
+    "testedFunction": "filterAndMerge",
+    "duplicateFilterCodes": ["a", "2", "0"]
+}

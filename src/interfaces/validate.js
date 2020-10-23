@@ -3,30 +3,11 @@ import {createLogger} from '@natlibfi/melinda-backend-commons';
 import {MarcRecord} from '@natlibfi/marc-record';
 import {createValidationFactory, recordActions, COMMON_JOB_STATES, VALIDATOR_JOB_STATES, IMPORTER_JOB_STATES} from '@natlibfi/melinda-record-link-migration-commons';
 
-export async function validations(jobId, jobConfig, mongoOperator, amqpOperator) {
+export function validations(jobId, amqpOperator) {
   const logger = createLogger();
   const {filterRecordsBy} = recordActions();
 
-  const {sourceRecord, linkDataHarvesterValidationFilters} = jobConfig;
-  const validators = await pumpValidators(linkDataHarvesterValidationFilters);
-  const marcSourceRecord = new MarcRecord(sourceRecord);
-
-  await pumpMessagesFromQueue(marcSourceRecord, validators);
-
-  // Check recults
-  const messages = await amqpOperator.checkQueue(`${IMPORTER_JOB_STATES.PENDING_ERATUONTI_IMPORT}.${jobId}`, 'messages');
-  if (messages.length === 0 || !messages) {
-    logger.log('debug', 'All records validated. No records for erätuonti! -----');
-    await mongoOperator.setState({jobId, state: COMMON_JOB_STATES.DONE});
-    await amqpOperator.removeQueue(`${VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING}.${jobId}`);
-    return;
-  }
-
-  logger.log('debug', `All records validated. ${messages} to erätuonti! *****`);
-  await mongoOperator.setState({jobId, state: IMPORTER_JOB_STATES.PENDING_ERATUONTI_IMPORT});
-  await amqpOperator.removeQueue(`${VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING}.${jobId}`);
-
-  return true;
+  return {pumpValidators, pumpMessagesFromQueue, pumpValidation, pumpToAmqp, filterAndMerge};
 
   // Init validators
   async function pumpValidators(linkDataHarvesterValidationFilters, filters = []) {
@@ -36,6 +17,7 @@ export async function validations(jobId, jobConfig, mongoOperator, amqpOperator)
     }
 
     const validatorFilter = await createValidationFactory(linkDataHarvesterValidationFilter);
+    // console.log(validatorFilter); // eslint-disable-line no-console
     const ifFilter = linkDataHarvesterValidationFilter.if;
     const {changes} = linkDataHarvesterValidationFilter;
 
@@ -51,6 +33,7 @@ export async function validations(jobId, jobConfig, mongoOperator, amqpOperator)
     }
 
     const records = await amqpOperator.messagesToRecords(amqpMessages);
+    // console.log(JSON.stringify(records)); // eslint-disable-line no-console
     logger.log('debug', `Got records from queue. ${records.length} records pumping in validation!`);
 
     // Validate and filter records
@@ -111,17 +94,21 @@ export async function validations(jobId, jobConfig, mongoOperator, amqpOperator)
       return mergedLinkedValidData;
     }
 
-    const original = new MarcRecord(linkdata.record);
+    const original = new MarcRecord(linkdata.record, {subfieldValues: false});
     const filteredChanges = rest.filter(data => {
-      const compare = new MarcRecord(data.record);
-      const match = original.equalsTo(compare);
-      return match;
+      const compare = new MarcRecord(data.record, {subfieldValues: false});
+      const isMatch = original.equalsTo(compare);
+      // logger.log('debug', `Is match: ${isMatch}`);
+      return isMatch;
     }).map(data => data.changes).flat();
 
     // Logger.log('debug', `Filtered changes: ${JSON.stringify(filteredChanges)}`);
 
     if (filteredChanges.length > 0) {
-      const merged = {sourceRecord: linkdata.sourceRecord, changes: [...filteredChanges, ...linkdata.changes], record: linkdata.record};
+      logger.log('debug', 'Merging changes');
+      const allChanges = [...filteredChanges, ...linkdata.changes].map(change => JSON.stringify(change));
+      const uniqueChanges = [...new Set(allChanges)].map(change => JSON.parse(change));
+      const merged = {sourceRecord: linkdata.sourceRecord, changes: uniqueChanges, record: linkdata.record};
 
       const filteredRest = rest.filter(data => {
         const compare = new MarcRecord(data.record, {subfieldValues: false});

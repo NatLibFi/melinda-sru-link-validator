@@ -4,6 +4,7 @@ import {createLogger} from '@natlibfi/melinda-backend-commons';
 import {mongoFactory, VALIDATOR_JOB_STATES, IMPORTER_JOB_STATES, amqpFactory} from '@natlibfi/melinda-record-link-migration-commons';
 import {validations} from './interfaces/validate';
 import {importToErätuonti} from './interfaces/eratuonti';
+import {MarcRecord} from '@natlibfi/marc-record';
 
 export default async function ({
   apiUrl, apiUsername, apiPassword, apiClientUserAgent, mongoUrl, amqpUrl
@@ -41,7 +42,7 @@ export default async function ({
 
   async function checkJobsInState(state) {
     const job = await mongoOperator.getOne(state);
-    // Logger.log('debug', JSON.stringify(job, undefined, ' '));
+    // logger.log('debug', JSON.stringify(job, undefined, 2));
     if (job === undefined || job === null) { // eslint-disable-line functional/no-conditional-statement
       logger.log('info', `No job in state: ${state}`);
       return;
@@ -58,15 +59,39 @@ export default async function ({
     // Import linked data to Erätuonti
     if (state === IMPORTER_JOB_STATES.PENDING_ERATUONTI_IMPORT || state === IMPORTER_JOB_STATES.PROCESSING_ERATUONTI_IMPORT) {
       await importToErätuonti(jobId, jobConfig, mongoOperator, amqpOperator, eratuontiConfig);
-      return check(true);
+      return check();
     }
 
     // Validate potential link data
     if (state === VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING || state === VALIDATOR_JOB_STATES.PROCESSING_VALIDATION_FILTERING) {
-      await validations(jobId, jobConfig, mongoOperator, amqpOperator);
+      await runValidations(job, mongoOperator, amqpOperator);
       return check();
     }
 
     return check();
+  }
+
+  async function runValidations(job, mongoOperator, amqpOperator) {
+    const {jobId, jobConfig} = job;
+    const {sourceRecord, linkDataHarvesterValidationFilters} = jobConfig;
+    const validationsOperator = validations(jobId, amqpOperator);
+
+    const validators = await validationsOperator.pumpValidators(linkDataHarvesterValidationFilters);
+    const marcSourceRecord = new MarcRecord(sourceRecord);
+
+    await validationsOperator.pumpMessagesFromQueue(marcSourceRecord, validators);
+
+    // Check recults
+    const messages = await amqpOperator.checkQueue(`${IMPORTER_JOB_STATES.PENDING_ERATUONTI_IMPORT}.${jobId}`, 'messages');
+    if (messages.length === 0 || !messages) {
+      logger.log('debug', 'All records validated. No records for erätuonti! -----');
+      await mongoOperator.setState({jobId, state: COMMON_JOB_STATES.DONE});
+      await amqpOperator.removeQueue(`${VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING}.${jobId}`);
+      return;
+    }
+
+    logger.log('debug', `All records validated. ${messages} to erätuonti! *****`);
+    await mongoOperator.setState({jobId, state: IMPORTER_JOB_STATES.PENDING_ERATUONTI_IMPORT});
+    await amqpOperator.removeQueue(`${VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING}.${jobId}`);
   }
 }

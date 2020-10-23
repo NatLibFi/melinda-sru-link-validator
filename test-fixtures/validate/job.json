@@ -1,0 +1,323 @@
+{
+    "_id": "5f916144a3615f41275b3353",
+    "jobId": "537ff15c-a3c3-4b54-b755-57778b499aa8",
+    "jobState": "PENDING_VALIDATION_FILTERING",
+    "jobConfig": {
+      "sourceRecord": {
+        "leader": "     cz  a2200121n  4500",
+        "fields": [
+          {
+            "tag": "001",
+            "value": "0000XXXXX"
+          },
+          {
+            "tag": "003",
+            "value": "FI-ASTERI-N"
+          },
+          {
+            "tag": "005",
+            "value": "20191116150100.0"
+          },
+          {
+            "tag": "008",
+            "value": "941113| |az|||aabn           | aaa      "
+          },
+          {
+            "tag": "035",
+            "ind1": " ",
+            "ind2": " ",
+            "subfields": [
+              {
+                "code": "a",
+                "value": "(FI-ASTERI-N)0000XXXXX"
+              }
+            ]
+          },
+          {
+            "tag": "040",
+            "ind1": " ",
+            "ind2": " ",
+            "subfields": [
+              {
+                "code": "a",
+                "value": "FI-NL"
+              },
+              {
+                "code": "b",
+                "value": "fin"
+              },
+              {
+                "code": "e",
+                "value": "rda"
+              },
+              {
+                "code": "d",
+                "value": "FI-NLD"
+              }
+            ]
+          },
+          {
+            "tag": "046",
+            "ind1": " ",
+            "ind2": " ",
+            "subfields": [
+              {
+                "code": "f",
+                "value": "18xx-04-12"
+              },
+              {
+                "code": "g",
+                "value": "19xx-06-14"
+              },
+              {
+                "code": "2",
+                "value": "edtf"
+              }
+            ]
+          },
+          {
+            "tag": "100",
+            "ind1": "1",
+            "ind2": " ",
+            "subfields": [
+              {
+                "code": "a",
+                "value": "Foo, Faa,"
+              },
+              {
+                "code": "d",
+                "value": "18xx-19xx"
+              },
+              {
+                "code": "0",
+                "value": "(FI-ASTERI-N)000048368"
+              }
+            ]
+          },
+          {
+            "tag": "377",
+            "ind1": " ",
+            "ind2": " ",
+            "subfields": [
+              {
+                "code": "a",
+                "value": "fin"
+              }
+            ]
+          },
+          {
+            "tag": "378",
+            "ind1": " ",
+            "ind2": " ",
+            "subfields": [
+              {
+                "code": "q",
+                "value": "Faa Fii"
+              }
+            ]
+          },
+          {
+            "tag": "400",
+            "ind1": "1",
+            "ind2": " ",
+            "subfields": [
+              {
+                "code": "a",
+                "value": "Foo, Faa Fii,"
+              },
+              {
+                "code": "d",
+                "value": "18xx-19xx"
+              }
+            ]
+          }
+        ]
+      },
+      "linkDataHarvestSearch": {
+        "type": "sru",
+        "from": {
+          "tag": "100",
+          "value": {
+            "code": "a"
+          }
+        },
+        "queryFormat": "dc.author=%s",
+        "url": "https://sru.api.melinda-test.kansalliskirjasto.fi/bib",
+        "offset": 1204
+      },
+      "linkDataHarvesterApiProfileId": "foo",
+      "linkDataHarvesterValidationFilters": [
+        {
+          "if": {
+            "collect": [
+              "a",
+              "b",
+              "c",
+              "d",
+              "q"
+            ],
+            "from": {
+              "tag": "100",
+              "value": "collect"
+            },
+            "to": {
+              "tag": "^(?:100|600|700)$",
+              "value": "collect"
+            }
+          },
+          "fieldsPresent": [
+            "^(?:100|600|700)$",
+            "^042$"
+          ],
+          "fieldStructure": [
+            {
+              "tag": "^042$",
+              "subfields": {
+                "a": {
+                  "pattern": "^(?:finbd)"
+                }
+              }
+            }
+          ],
+          "changes": [
+            {
+              "from": {
+                "tag": "001",
+                "value": "value"
+              },
+              "to": {
+                "tag": "^(?:100|600|700)$",
+                "value": {
+                  "code": "0"
+                },
+                "format": "(FI-ASTERI-N)%s",
+                "where": {
+                  "collect": [
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "q"
+                  ],
+                  "from": {
+                    "tag": "100",
+                    "value": "collect"
+                  },
+                  "to": {
+                    "tag": "^(?:100|600|700)$",
+                    "value": "collect"
+                  }
+                }
+              },
+              "order": [
+                "a",
+                "c",
+                "q",
+                "d",
+                "e",
+                {
+                  "code": "0",
+                  "value": "^\\(FI-ASTERI-N\\)"
+                },
+                "0"
+              ]
+            },
+            {
+              "removeSubfields": {
+                "tag": "^(?:100|600|700)$",
+                "code": "0",
+                "value": "^\\d+$"
+              }
+            }
+          ]
+        },
+        {
+          "if": {
+            "collect": [
+              "a",
+              "b",
+              "c",
+              "d",
+              "q"
+            ],
+            "from": {
+              "tag": "100",
+              "value": "collect"
+            },
+            "to": {
+              "tag": "^(?:100|600|700)$",
+              "value": "collect"
+            }
+          },
+          "fieldsPresent": [
+            "^(?:100|600|700)$",
+            "^035$"
+          ],
+          "fieldStructure": [
+            {
+              "tag": "^035$",
+              "subfields": {
+                "a": {
+                  "pattern": "^\\(FI-VIOLA\\)\\d+"
+                }
+              }
+            }
+          ],
+          "changes": [
+            {
+              "from": {
+                "tag": "001",
+                "value": "value"
+              },
+              "to": {
+                "tag": "^(?:100|600|700)$",
+                "value": {
+                  "code": "0"
+                },
+                "format": "(FI-ASTERI-N)%s",
+                "where": {
+                  "collect": [
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "q"
+                  ],
+                  "from": {
+                    "tag": "100",
+                    "value": "collect"
+                  },
+                  "to": {
+                    "tag": "^(?:100|600|700)$",
+                    "value": "collect"
+                  }
+                }
+              },
+              "order": [
+                "a",
+                "c",
+                "q",
+                "d",
+                "e",
+                {
+                  "code": "0",
+                  "value": "^\\(FI-ASTERI-N\\)"
+                },
+                "0"
+              ]
+            },
+            {
+              "removeSubfields": {
+                "tag": "^(?:100|600|700)$",
+                "code": "0",
+                "value": "^\\d+$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "blobIds": [],
+    "creationTime": "2020-10-22T10:39:00.000Z",
+    "modificationTime": "2020-10-23T06:27:21.919Z"
+  }
