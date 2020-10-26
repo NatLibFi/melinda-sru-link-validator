@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars, no-undef, no-warning-comments */
 import {promisify} from 'util';
 import {createLogger} from '@natlibfi/melinda-backend-commons';
-import {mongoFactory, VALIDATOR_JOB_STATES, IMPORTER_JOB_STATES, amqpFactory} from '@natlibfi/melinda-record-link-migration-commons';
+import {mongoFactory, COMMON_JOB_STATES, VALIDATOR_JOB_STATES, IMPORTER_JOB_STATES, amqpFactory} from '@natlibfi/melinda-record-link-migration-commons';
 import {validations} from './interfaces/validate';
 import {importToErätuonti} from './interfaces/eratuonti';
 import {MarcRecord} from '@natlibfi/marc-record';
@@ -86,12 +86,10 @@ export default async function ({
     if (messages.length === 0 || !messages) {
       logger.log('debug', 'All records validated. No records for erätuonti! -----');
       await mongoOperator.setState({jobId, state: COMMON_JOB_STATES.DONE});
-      await amqpOperator.removeQueue(`${VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING}.${jobId}`);
       return;
     }
 
     logger.log('debug', `All records validated. ${messages} to erätuonti! *****`);
     await mongoOperator.setState({jobId, state: IMPORTER_JOB_STATES.PENDING_ERATUONTI_IMPORT});
-    await amqpOperator.removeQueue(`${VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING}.${jobId}`);
   }
 }

@@ -28,7 +28,9 @@ export function validations(jobId, amqpOperator) {
   async function pumpMessagesFromQueue(marcSourceRecord, validators) {
     // Get records
     const amqpMessages = await amqpOperator.checkQueue(`${VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING}.${jobId}`);
-    if (!amqpMessages) {
+    if (amqpMessages === 0 || !amqpMessages) {
+      logger.log('debug', `********** Amqp messages: ${JSON.stringify(amqpMessages)}`);
+      await amqpOperator.removeQueue(`${VALIDATOR_JOB_STATES.PENDING_VALIDATION_FILTERING}.${jobId}`);
       return true;
     }
 
@@ -128,8 +130,9 @@ export function validations(jobId, amqpOperator) {
       return;
     }
 
+    logger.log('silly', `Sending data to: ${queue}`);
     await amqpOperator.sendToQueue({queue, correlationId: jobId, data: linkData});
 
-    return pumpToAmqp(rest, jobId);
+    return pumpToAmqp(rest, jobId, queue);
   }
 }

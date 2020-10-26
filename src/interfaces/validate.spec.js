@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars, no-undef, no-warning-comments, no-console */
 import fixturesFactory, {READERS} from '@natlibfi/fixura';
 import {MarcRecord} from '@natlibfi/marc-record';
+import {filter} from 'bluebird';
 import {expect} from 'chai';
 import {promisify} from 'util';
 import {validations} from './validate';
@@ -32,19 +33,24 @@ describe('Validate', () => {
 
   describe('PumpValidation', () => {
     it('Should filter 1st and 5th out of records and have 4th twice', async () => {
+      const filteredExpected = getFixture({components: ['pumpValidation', 'filtered.json'], reader: READERS.JSON});
       const validators = await pumpValidators(linkDataHarvesterValidationFilters);
       const filtered = await pumpValidation(validators, marcSourceRecord, marcRecords);
-      expect(filtered.length).to.eql(4);
+
+      expect(filtered.length).to.eql(filteredExpected.length);
+      expect(filtered).to.eql(filteredExpected);
     });
   });
 
   describe('FilterAndMerge', () => {
     it('Should merge 3th and 4th unique changes', async () => {
-      const validators = await pumpValidators(linkDataHarvesterValidationFilters);
-      const filtered = await pumpValidation(validators, marcSourceRecord, marcRecords);
+      const filtered = getFixture({components: ['pumpValidation', 'filtered.json'], reader: READERS.JSON});
+      const mergedExpected = getFixture({components: ['filterAndMerge', 'merged.json'], reader: READERS.JSON});
       const merged = await filterAndMerge(filtered);
-      expect(merged.length).to.eql(3);
-      expect(merged[1].changes).to.eql(merged[2].changes);
+      //console.log(JSON.stringify(merged)); // eslint-disable-line no-console
+
+      expect(merged.length).to.eql(mergedExpected.length);
+      expect(merged).to.eql(mergedExpected);
     });
   });
 });

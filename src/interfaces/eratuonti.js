@@ -19,6 +19,7 @@ export async function importToErätuonti(jobId, jobConfig, mongoOperator, amqpOp
   async function pumpMessagesFromQueue() {
     const amqpMessages = await amqpOperator.checkQueue(`${IMPORTER_JOB_STATES.PENDING_ERATUONTI_IMPORT}.${jobId}`);
     if (!amqpMessages) {
+      amqpOperator.removeQueue(`${IMPORTER_JOB_STATES.PENDING_ERATUONTI_IMPORT}.${jobId}`);
       return;
     }
 
