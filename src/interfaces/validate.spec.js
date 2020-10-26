@@ -1,9 +1,7 @@
 /* eslint-disable no-unused-vars, no-undef, no-warning-comments, no-console */
 import fixturesFactory, {READERS} from '@natlibfi/fixura';
 import {MarcRecord} from '@natlibfi/marc-record';
-import {filter} from 'bluebird';
 import {expect} from 'chai';
-import {promisify} from 'util';
 import {validations} from './validate';
 
 describe('Validate', () => {
@@ -15,8 +13,7 @@ describe('Validate', () => {
   const {jobId, jobConfig} = job;
   const {sourceRecord, linkDataHarvesterValidationFilters} = jobConfig;
   const marcSourceRecord = new MarcRecord(sourceRecord);
-  const amqpOperator = createAmqpOperator();
-  const {pumpValidators, pumpValidation, filterAndMerge} = validations(jobId, amqpOperator);
+  const {pumpValidators, pumpValidation, filterAndMerge} = validations(jobId);
 
   describe('PumpValidators', () => {
     it('Should transform string validators to functioning ones', async () => {
@@ -55,10 +52,3 @@ describe('Validate', () => {
   });
 });
 
-function createAmqpOperator() {
-  const setTimeoutPromise = promisify(setTimeout);
-  return {
-    ackMessages: () => setTimeoutPromise(5),
-    sendToQueue: () => setTimeoutPromise(5)
-  };
-}
